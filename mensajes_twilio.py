@@ -82,7 +82,7 @@ def main():
     df_forecast = weather_forecast.generate_forecast_df()
     df_rain = weather_forecast.filter_rain_hours(df_forecast)
     mensaje = f'\n¡Hola!\n\n\nEl pronóstico de lluvia hoy {df_forecast["Fecha"].iloc[0]} en {query} es:\n\n\n{str(df_rain)}'
-    # time.sleep(2)  # Si no es necesario, considera eliminar esta línea
+    time.sleep(2)
     twilio_sender = TwilioMessageSender(twilio_account_sid, twilio_auth_token, phone_number)
     twilio_sender.send_message(mensaje)
 # Inicio de aplicacion
