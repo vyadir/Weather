@@ -39,7 +39,7 @@ def create_df(data):
     df_rain.set_index('Hora', inplace = True)
     return df_rain
 
-def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query):
+def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query,TO):
     account_sid = TWILIO_ACCOUNT_SID
     auth_token = TWILIO_AUTH_TOKEN
     client = Client(account_sid, auth_token)
@@ -47,6 +47,6 @@ def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query):
                     .create(
                         body='\nHola! \n\n\n El pronostico de lluvia hoy '+ input_date +' en ' + query +' es : \n\n\n ' + str(df),
                         from_=PHONE_NUMBER,
-                        to='+573222007879'
+                        to= TO
                     )
     return message.sid

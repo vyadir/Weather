@@ -1,6 +1,6 @@
 import os
 from twilio.rest import Client
-from config import TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,PHONE_NUMBER,API_KEY_WAPI
+from config import TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,PHONE_NUMBER,API_KEY_WAPI,TO
 import time
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -20,5 +20,5 @@ for i in tqdm(range(24),colour = 'green'):
     datos.append(get_forecast(response,i))
 df_rain = create_df(datos)
 # Send Message
-message_id = send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df_rain,query)
+message_id = send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df_rain,query,TO)
 print('Mensaje Enviado con exito ' + message_id)
